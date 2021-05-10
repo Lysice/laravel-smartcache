@@ -1,0 +1,22 @@
+{
+    "name": "lysice/laravel-cache",
+    "description": "a secondary cache tool for laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lysice",
+            "email": "snowist@126.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lysice\\Cache\\": "src/",
+            "Lysice\\Cache\\Concerns\\" : "Concerns/",
+            "Lysice\\Cache\\Commands\\" : "Commands/"
+        }
+    },
+    "require": {
+        "php": ">=7.0"
+    },
+    "minimum-stability": "dev"
+}
