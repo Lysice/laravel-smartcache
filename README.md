@@ -1,4 +1,4 @@
-## Laravel-2cache 一款基于yac/apcu的laravel二级缓存扩展包
+## Laravel-smartcache 一款基于yac/apcu的laravel二级缓存扩展包
 二级缓存器，基于APCu/Yac。
 
 #### 如果本扩展帮助到了你 欢迎star。
