@@ -71,7 +71,12 @@ class CacheManager {
      * @param string|array $value
      */
     public function cache(string $key, int $ttl, $value) {
-        $this->memoryCache->set($key, $value, $ttl);
+        if (is_array($value)) {
+            $this->memoryCache->set($key, json_encode($value), $ttl);
+        } else {
+            $this->memoryCache->set($key, $value, $ttl);
+        }
+
         // mode sync
         switch ($this->config['sync_mode']) {
             case Constants::SYNC_MODE_PUBSUB:
