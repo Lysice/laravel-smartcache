@@ -79,11 +79,7 @@ class RedisInstance implements CacheConcern {
         if ($ttl == 0) {
             return $this->redis->set($key, $value);
         } else {
-            if ($this->redis->exists($key)) {
-                return $this->redis->set($key, $value, 'ex', $ttl);
-            } else {
-                return $this->redis->set($key, $value, 'nx', $ttl);
-            }
+            return $this->redis->set($key, $value, 'ex', $ttl);
         }
     }
 
