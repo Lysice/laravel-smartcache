@@ -1,6 +1,9 @@
-## Laravel-2cache 一款基于yac/apcu的laravel二级缓存扩展包
+## Laravel-smartcache 一款基于yac/apcu的laravel二级缓存扩展包
 二级缓存器，基于APCu/Yac。
 
+#### 如果本扩展帮助到了你 欢迎star。[git](https://github.com/Lysice/laravel-smartcache)
+
+#### 如果本扩展有任何问题或有其他想法 欢迎提 issue与pull request。
 [Yac官方文档](https://www.php.net/manual/zh/book.yac)
 
 [APCu官方文档](https://www.php.net/manual/zh/book.apcu)
@@ -50,7 +53,7 @@ remember(string $key, int $ttl, Callable $callback){}
 ```
 然后使用:
 ```
-        $result = SecondaryCache::remember('wa_p_' . $id, 100, function () {
+        $result = SecondaryCache::remember('your key', $ttl, function () {
             return  [
                 'cached' => true
             ];
@@ -58,7 +61,7 @@ remember(string $key, int $ttl, Callable $callback){}
 ```
 或者您也可以直接按照如下使用
 ```
-        app(CacheManager::class)->remember('wa_p_' . $id, getRandTtl(), function () use ($path) {
+        app(CacheManager::class)->remember('your key', $ttl, function () {
             return  [
                 'cached' => 1
             ];
