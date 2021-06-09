@@ -21,7 +21,7 @@
         "illuminate/support": ">=5.8",
         "illuminate/routing": ">=5.8",
         "illuminate/filesystem": ">=5.8",
-        "appstract/lush-http": "^0.5.*"
+        "appstract/lush-http": "^0.5.5"
     },
     "minimum-stability": "dev"
 }
