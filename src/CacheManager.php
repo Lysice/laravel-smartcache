@@ -45,13 +45,20 @@ class CacheManager {
      * @return array|mixed
      */
     public function remember(string $key, int $ttl, Callable $callback) {
+        if (!$this->config['enabled']) {
+            return $callback();
+        }
+
         $result = $this->memoryCache->get($key);
         if (empty($result)) {
             $result = $this->redisInstance->get($key);
 
             if (empty($result)) {
                 $result = $callback();
-                $this->cache($key, $ttl, $result);
+                if (!empty($result)) {
+                    $this->cache($key, $ttl, $result);
+                }
+
                 return $result;
             }
             // if redis cache not miss write it to memoryCache

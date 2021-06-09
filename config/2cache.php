@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'enabled' => true,
     'data_connection' => 'default',
     'pub_connection' => '',
     'cache_type' => \Lysice\Cache\Constants::CACHE_TYPE_YAC,
