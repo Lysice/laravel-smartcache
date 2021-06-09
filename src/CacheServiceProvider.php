@@ -3,7 +3,9 @@
 namespace Lysice\Cache;
 
 use Illuminate\Support\ServiceProvider;
+use Lysice\Cache\Commands\Clear2CacheCommand;
 use Lysice\Cache\Commands\RedisPubSubSyncCommand;
+use Lysice\Cache\Commands\StatusCommand;
 
 /**
  * Class CacheServiceProvider
@@ -12,7 +14,9 @@ use Lysice\Cache\Commands\RedisPubSubSyncCommand;
 class CacheServiceProvider extends ServiceProvider {
 
     protected $commands = [
-        RedisPubSubSyncCommand::class
+        RedisPubSubSyncCommand::class,
+        Clear2CacheCommand::class,
+        StatusCommand::class
     ];
 
     public function boot()
@@ -41,5 +45,14 @@ class CacheServiceProvider extends ServiceProvider {
             return new YacInstance();
         });
         $this->commands($this->commands);
+
+        // bind routes
+        $this->app->router->group([
+            'middleware'    => [Request::class],
+            'prefix'        => config('2cache.prefix'),
+            'namespace'     => 'Lysice\Cache',
+        ], function ($router) {
+            require __DIR__.'/routes.php';
+        });
     }
 }

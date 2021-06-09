@@ -1,5 +1,5 @@
 {
-    "name": "lysice/laravel-smartcache",
+    "name": "lysice/laravel-cache",
     "description": "a secondary cache tool for laravel",
     "license": "MIT",
     "authors": [
@@ -15,8 +15,13 @@
             "Lysice\\Cache\\Commands\\" : "Commands/"
         }
     },
-    "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0"
-    }
+        "php": ">=7.0",
+        "illuminate/console": ">=5.8",
+        "illuminate/support": ">=5.8",
+        "illuminate/routing": ">=5.8",
+        "illuminate/filesystem": ">=5.8",
+        "appstract/lush-http": "^0.5.*"
+    },
+    "minimum-stability": "dev"
 }
