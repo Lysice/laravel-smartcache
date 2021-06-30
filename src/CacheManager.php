@@ -81,7 +81,7 @@ class CacheManager {
         if (is_array($value)) {
             $value = json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }
-        $this->memoryCache->set($key, json_encode($value), $ttl);
+        $this->memoryCache->set($key, $value, $ttl);
 
         // mode sync
         switch ($this->config['sync_mode']) {
