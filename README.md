@@ -1,4 +1,9 @@
 ## Laravel-smartcache 一款基于yac/apcu的laravel二级缓存扩展包
+[![Latest Stable Version](https://poser.pugx.org/Lysice/laravel-smartcache/v/stable)](https://packagist.org/packages/Lysice/laravel-smartcache)
+[![Total Downloads](https://poser.pugx.org/Lysice/laravel-smartcache/downloads)](https://packagist.org/packages/Lysice/laravel-smartcache)
+[![Latest Unstable Version](https://poser.pugx.org/Lysice/laravel-smartcache/v/unstable)](https://packagist.org/packages/Lysice/laravel-smartcache)
+[![License](https://poser.pugx.org/Lysice/laravel-smartcache/license)](https://packagist.org/packages/Lysice/laravel-smartcache)
+
 二级缓存器，基于APCu/Yac。
 
 #### 如果本扩展帮助到了你 欢迎star。[git](https://github.com/Lysice/laravel-smartcache)
