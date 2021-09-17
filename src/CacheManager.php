@@ -65,11 +65,11 @@ class CacheManager {
             }
             // if redis cache not miss write it to memoryCache
             $this->memoryCache->set($key, $result, $ttl);
-            return getCacheValue($result, $this->config['compress_func']);
+            return getCacheValue($result, $this->config['compress_enabled'], $this->config['compress_func']);
         }
 
         // get from memory cache, we'll unCompress it
-        return getCacheValue($result, $this->config['compress_func']);
+        return getCacheValue($result, $this->config['compress_enabled'], $this->config['compress_func']);
     }
 
     /**
