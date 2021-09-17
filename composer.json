@@ -13,7 +13,10 @@
             "Lysice\\Cache\\": "src/",
             "Lysice\\Cache\\Concerns\\" : "Concerns/",
             "Lysice\\Cache\\Commands\\" : "Commands/"
-        }
+        },
+        "files": [
+            "functions.php"
+        ]
     },
     "require": {
         "php": ">=7.0",
@@ -21,7 +24,8 @@
         "illuminate/support": ">=5.8",
         "illuminate/routing": ">=5.8",
         "illuminate/filesystem": ">=5.8",
-        "appstract/lush-http": "^0.5.5"
+        "appstract/lush-http": "^0.5.5",
+        "ext-zlib": "*"
     },
     "minimum-stability": "dev"
 }

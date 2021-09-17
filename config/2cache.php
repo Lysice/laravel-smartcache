@@ -13,5 +13,8 @@ return [
     'verify_ssl' => false,
     'verify_host' => 2, // 0 for disabled
     'headers' => [],
-    'key' => '2cache'
+    'key' => '2cache',
+    'compress_enabled' => env('SMARTCACHE_COMPRESS_ENABLED', false),
+    'compress_func' => env('SMARTCACHE_COMPRESS_FUNC', 1),
+    'compress_level' => env('SMARTCACHE_COMPRESS_LEVEL', 9)
 ];

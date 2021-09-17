@@ -53,20 +53,23 @@ class CacheManager {
         if (empty($result)) {
             $result = $this->redisInstance->get($key);
 
+            // 1/2 all empty then reCache it.
             if (empty($result)) {
                 $result = $callback();
                 if (!empty($result)) {
                     $this->cache($key, $ttl, $result);
                 }
 
+                // this result is getting from callback so we don't neet to reCompress it.
                 return $result;
             }
             // if redis cache not miss write it to memoryCache
             $this->memoryCache->set($key, $result, $ttl);
-            return $result;
+            return getCacheValue($result, $this->config['compress_func']);
         }
 
-        return $result;
+        // get from memory cache, we'll unCompress it
+        return getCacheValue($result, $this->config['compress_func']);
     }
 
     /**
@@ -78,9 +81,9 @@ class CacheManager {
      * @param string|array $value
      */
     public function cache(string $key, int $ttl, $value) {
-        if (is_array($value)) {
-            $value = json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-        }
+        $value = setCacheValue(
+            $value, $this->config['compress_enabled'], $this->config['compress_func'], $this->config['compress_level']
+        );
         $this->memoryCache->set($key, $value, $ttl);
 
         // mode sync
@@ -121,6 +124,6 @@ class CacheManager {
             'v' => $value
         ];
 
-        $this->redisInstance->publish($this->config['redis_channel'], json_encode($value));
+        $this->redisInstance->publish($this->config['redis_channel'], $value);
     }
 }
