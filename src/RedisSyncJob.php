@@ -41,7 +41,7 @@ class RedisSyncJob implements ShouldQueue
     public function __construct($key, $ttl, $value)
     {
         $this->key = $key;
-        $this->value = $value;
+        $this->value = is_array($value) ? json_encode($value) : $value;
         $this->ttl = $ttl;
     }
 
@@ -53,7 +53,8 @@ class RedisSyncJob implements ShouldQueue
     public function handle()
     {
         $this->log('start queue job');
-        app(RedisInstance::class)->set($this->key, json_encode($this->value), $this->ttl);
+
+        app(RedisInstance::class)->set($this->key, $this->value, $this->ttl);
         $this->log('end queue job');
     }
 
